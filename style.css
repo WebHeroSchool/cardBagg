@@ -142,7 +142,7 @@ body {
 .card__pic {
   z-index: 1;
   transform: translate(82px, 37px) rotate(39deg);
-  box-shadow: -2px 0px 1px rgba(0, 0, 0, .3), 0px 4px 4px rgba(0, 0, 0, .25);
+  box-shadow: -2px 0 1px rgba(0, 0, 0, .3), 0 4px 4px rgba(0, 0, 0, .25);
 }
 
 .hidden {
@@ -238,4 +238,5 @@ body {
   .game input {
     font: normal bold 32px/ 59px 'Roboto', sans-serif;
   }
+
 }
