@@ -71,8 +71,22 @@ body {
 
 /* квадратик */
 
+.hard-level:hover::before,
+.active-level::before {
+  background: url(img/square.png) no-repeat;
+  background-size: cover;
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 30.5%;
+  right: 95.7%;
+}
+
 .simple-level::before,
-.medium-level:hover::before {
+.medium-level:hover::before,
+.hard-level:hover::before,
+.active-level::before {
   background: url(img/square.png) no-repeat;
   background-size: cover;
   content: "";
@@ -89,17 +103,6 @@ body {
 
 .game__medium {
   margin-bottom: 1.8%;
-}
-
-.hard-level:hover::before {
-  background: url(img/square.png) no-repeat;
-  background-size: cover;
-  content: "";
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  top: 30.5%;
-  right: 95.7%;
 }
 
 .begin {
