@@ -44,7 +44,13 @@ body {
   padding: 0 0 0 2.5%;
 }
 
-.game input {
+.game {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-level {
+  position: relative;
   outline: none;
   background: none;
   color: #fff;
@@ -52,26 +58,21 @@ body {
   align-self: flex-start;
   margin-left: 6%;
   cursor: pointer;
+  margin-bottom: 1.8%;
 }
 
-.game input:hover {
+.game-level:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 
-.game {
-  display: flex;
-  flex-direction: column;
-}
-
-.game label {
-  position: relative;
+#hard {
+  margin-bottom: 0;
 }
 
 /* квадратик */
 
-.hard-level:hover::before,
 .active-level::before {
   background: url(img/square.png) no-repeat;
   background-size: cover;
@@ -79,30 +80,8 @@ body {
   width: 25px;
   height: 25px;
   position: absolute;
-  top: 30.5%;
-  right: 95.7%;
-}
-
-.simple-level::before,
-.medium-level:hover::before,
-.hard-level:hover::before,
-.active-level::before {
-  background: url(img/square.png) no-repeat;
-  background-size: cover;
-  content: "";
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  top: 19.5%;
-  right: 95.7%;
-}
-
-.game__simple {
-  margin-bottom: 1.8%;
-}
-
-.game__medium {
-  margin-bottom: 1.8%;
+  top: 27%;
+  right: 110.4%;
 }
 
 .begin {

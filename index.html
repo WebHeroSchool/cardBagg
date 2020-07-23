@@ -17,12 +17,12 @@
         <span class="level__difficulty">Выберите сложность и игра начнется. Чем выше уровень - тем больше будет выборка карт.</span>
       </div>
       <div class="game">
-        <label class="simple-level" id="simple"><input class="game__simple" type="button" value="Простой"></label>
-        <label class="medium-level" id="medium"><input class="game__medium" type="button" value="Средний"></label>
-        <label class="hard-level" id="hard"><input class="game__hard" type="button" value="Сложный"></label>
+        <button class="game-level active-level" id="simple">Простой</button> 
+        <button class="game-level" id="medium">Средний</button>
+        <button class="game-level" id="hard">Сложный</button>
       </div>
       <div class="begin">
-        <input class="begin__button" type="button" value="Начать игру">
+        <input class="begin__button" type="button" id="begin" value="Начать игру">
         <div class="card">
           <img class="card__foto" src="img/card.png" alt="card">
           <img class="card__pic" src="img/card.png" alt="card">
