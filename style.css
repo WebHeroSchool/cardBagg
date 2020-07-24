@@ -131,6 +131,72 @@ body {
   display: none;
 }
 
+.flip {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  width: 56.5%;
+  min-height: 1024px;
+}
+
+.card-back__wrap {
+  background: url(img/card.png);
+  align-self: center;
+  width: 218px;
+  height: 341px;
+  cursor: pointer;
+  border-radius: 4%;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: 0.5s;
+}
+
+/* переворот */
+
+.flip-card {
+  background-color: transparent;
+  width: 218px;
+  height: 341px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner:hover {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+  transform: translate3d(-10px, -30px, -40px) rotate(-3.08deg);
+}
+
+.flip-card.active .flip-card-inner {
+ transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background: url(img/gameOver.png);
+  transform: rotateY(180deg);
+}
+
+.card-front_bug {
+  background: url(img/bag.png);
+  transform: rotateY(180deg);
+} 
+
 /* Медиазапросы */
 
 @media (max-width: 768px) {

@@ -1,46 +1,60 @@
-//3. клик на простой уровень и добавление активного уровня
+const Levels = document.querySelectorAll('.game-level');
+let level = 3;
 
-const simpleLevel = document.getElementById('simple');
-console.log(simpleLevel);
+const difficultyLevel = (e) => {
+	Levels.forEach(item => item.classList.remove('active-level'));
+	e.target.classList.add('active-level');
+  	level = e.target.dataset.level;
+};
+Levels.forEach(item => addEventListener('click', difficultyLevel));
 
-const difficultyLevel = (btn) => {
-	simpleLevel.classList.remove('active-level');
-	btn.target.classList.add('active-level');
-	console.log('Ура!')
+const start = document.getElementById('begin');
+const body = document.body;
+const wrap = document.createElement('div');
+const field = document.querySelector('.container');
+
+const beginGame = () => {
+	field.classList.add('hidden');
+	wrap.classList.add('flip');
+	body.append(wrap);
+	const random = Math.floor(Math.random()*level);
+	for (let i = 0; i < level; i++) {
+		const flipCard = document.createElement('div');
+		const flipCardInner = document.createElement('div');
+		const cardBack = document.createElement('div');
+		const card = document.createElement('img');
+		const cardFront = document.createElement('div');
+		flipCard.classList.add('flip-card');
+		flipCardInner.classList.add('flip-card-inner');
+		cardBack.classList.add('card-back');
+		card.classList.add('card-back__wrap');
+		cardFront.classList.add('card-front');
+
+		if (i === random) {
+			cardFront.classList.add('card-front_bug');
+		}
+
+		wrap.append(flipCard);
+		flipCard.append(flipCardInner);
+		flipCardInner.append(cardBack);
+		cardBack.append(card);
+		flipCardInner.append(cardFront);
+	}
+
+	const turn = document.querySelectorAll('.flip-card');
+	const isFlip = false;
+	const overturnCard = (e) => {
+		if (!isFlip) {
+			e.currentTarget.classList.add('active');
+			isFlip = true;
+		} else {
+			window.location.reload();
+		}
+	};
+	turn.forEach(item => {
+		item.addEventListener('click', overturnCard);
+	});
+	removeEventListener('click', difficultyLevel);
 };
 
-simpleLevel.addEventListener('click', difficultyLevel);
-
-
-
-// клики на все уровни и переключение активного уровня с квадратиком
-
-// const levels = document.querySelectorAll('.game-level');
-// console.log(levels);
-
-// const difficultyLevel = (btn) => {
-// 	levels.forEach(btn => btn.classList.remove('active-level'));
-// 	btn.target.classList.add('active-level');
-// 	console.log('Ура!');
-// };
-
-// levels.forEach(btn => {
-// 	btn.addEventListener('click', difficultyLevel);
-// 	// btn.classList.toggle('active-level');
-// });
-
-
-
-// 4. 
-
-
-//5. клик на кнопку Начать игру, но здесь еще нужна функция, которая запустит игру
-
-// const start = document.getElementById('begin');
-// console.log(start);
-
-// const beginGame = () => {
-// 	console.log('Поехали');
-// };
-
-// start.addEventListener('click', beginGame);
+start.addEventListener('click', beginGame);
