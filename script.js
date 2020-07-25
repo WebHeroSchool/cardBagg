@@ -42,7 +42,7 @@ const beginGame = () => {
 	}
 
 	const turn = document.querySelectorAll('.flip-card');
-	const isFlip = false;
+	let isFlip = false;
 	const overturnCard = (e) => {
 		if (!isFlip) {
 			e.currentTarget.classList.add('active');
