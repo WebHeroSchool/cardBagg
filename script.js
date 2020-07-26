@@ -5,6 +5,13 @@ const difficultyLevel = (e) => {
 	Levels.forEach(item => item.classList.remove('active-level'));
 	e.target.classList.add('active-level');
   	level = e.target.dataset.level;
+
+  	let three = document.querySelector('[data-level="3"]');
+
+  	if (e.target.dataset.level === undefined) {
+  		level = 3;
+  		three.classList.add('active-level');
+  	}
 };
 Levels.forEach(item => addEventListener('click', difficultyLevel));
 
@@ -29,6 +36,18 @@ const beginGame = () => {
 		cardBack.classList.add('card-back');
 		card.classList.add('card-back__wrap');
 		cardFront.classList.add('card-front');
+
+		if (i === 2) {
+			wrap.classList.add('flip-three');
+		} else if (i === 5) {
+			wrap.classList.remove('flip-three');
+			wrap.classList.add('flip-six');
+		} else if (i === 9) {
+			wrap.classList.remove('flip-six');
+			wrap.classList.add('flip-ten');
+		} else {
+			wrap.classList.add('flip');
+		}
 
 		if (i === random) {
 			cardFront.classList.add('card-front_bug');

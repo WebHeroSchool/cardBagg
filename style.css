@@ -72,7 +72,6 @@ body {
 }
 
 /* квадратик */
-
 .active-level::before {
   background: url(img/square.png) no-repeat;
   background-size: cover;
@@ -134,9 +133,29 @@ body {
 .flip {
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
   width: 56.5%;
+}
+
+.flip-three {
+  width: 52.5%;
+  flex-direction: row;
+  flex-wrap: nowrap;
   min-height: 1024px;
+}
+
+.flip-six {
+  width: 51.5%;
+  padding: 10.5% 0;
+  min-height: 0;
+  flex-wrap: wrap;
+}
+
+.flip-ten {
+  padding: 5% 0;
+  width: 84.5%;
 }
 
 .card-back__wrap {
@@ -147,17 +166,17 @@ body {
   cursor: pointer;
   border-radius: 4%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
-  transition: 0.5s;
+  transition: .5s;
 }
 
 /* переворот */
-
 .flip-card {
   background-color: transparent;
   width: 218px;
   height: 341px;
   perspective: 1000px;
   cursor: pointer;
+  margin: 1.5% .4%;
 }
 
 .flip-card-inner {
@@ -195,12 +214,61 @@ body {
 .card-front_bug {
   background: url(img/bag.png);
   transform: rotateY(180deg);
-}
+} 
+
 /* Медиазапросы */
+@media (max-width: 1350px) {
+  .flip-three {
+    width: 65.5%;
+  }
+
+  .flip-six {
+    width: 50.5%;
+  }
+
+  .flip-ten {
+    width: 77.5%;
+  }
+
+  .flip-card,
+  .flip-card-inner,
+  .card-back,
+  .card-back__wrap,
+  .card-front {
+    background-size: 165px 261px;
+    height: 261px;
+    width: 165px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .flip-ten {
+    width: 90.5%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .flip-six {
+    width: 42.5%;
+  }
+
+  .flip-ten {
+    width: 64.5%;
+  }
+
+  .flip-card,
+  .flip-card-inner,
+  .card-back,
+  .card-back__wrap,
+  .card-front {
+    background-size: 105px 161px;
+    height: 161px;
+    width: 105px;
+  }
+}
 
 @media (max-width: 768px) {
-  .main {
-    max-width: 85%;
+  body {
     min-height: 815px;
   }
 
@@ -217,8 +285,12 @@ body {
     font: normal bold 15px/ 21px 'Roboto', sans-serif;
   }
 
-  .game input {
+  .game-level {
     font: normal bold 46px/ 59px 'Roboto', sans-serif;
+  }
+
+  .active-level::before {
+    right: 104.4%;
   }
 
   .begin {
@@ -235,10 +307,32 @@ body {
   .card {
     display: none;
   }
+
+  .flip-three {
+    min-height: 815px;
+  }
+
+  .flip-six {
+    width: 55.5%;
+  }
+
+  .flip-ten {
+    width: 70.5%;
+  }
+
+  .flip-card,
+  .flip-card-inner,
+  .card-back,
+  .card-back__wrap,
+  .card-front {
+    background-size: 86px 131px;
+    height: 131px;
+    width: 86px;
+  }
 }
 
 @media (max-width: 375px) {
-  .main {
+  body {
     min-height: 700px;
   }
 
@@ -254,8 +348,18 @@ body {
     font: normal bold 12px/ 21px 'Roboto', sans-serif;
   }
 
-  .game input {
+  .game-level {
     font: normal bold 36px/ 59px 'Roboto', sans-serif;
+  }
+
+  .flip-three {
+    min-height: 670px;
+  }
+
+  .active-level::before {
+    width: 20px;
+    height: 20px;
+    top: 33%;
   }
 
   .begin__button {
@@ -266,7 +370,7 @@ body {
 }
 
 @media (max-width: 320px) {
-  .main {
+  body {
     min-height: 570px;
   }
 
@@ -282,7 +386,7 @@ body {
     font: normal bold 10px/ 21px 'Roboto', sans-serif;
   }
 
-  .game input {
+  .game-level {
     font: normal bold 32px/ 59px 'Roboto', sans-serif;
   }
 }
