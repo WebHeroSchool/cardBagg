@@ -1,17 +1,16 @@
 const Levels = document.querySelectorAll('.game-level');
 let level = 3;
 
-const difficultyLevel = (e) => {
+const difficultyLevel = e => {
 	Levels.forEach(item => item.classList.remove('active-level'));
 	e.target.classList.add('active-level');
-  	level = e.target.dataset.level;
+	level = e.target.dataset.level;
 
-  	let three = document.querySelector('[data-level="3"]');
-
-  	if (e.target.dataset.level === undefined) {
-  		level = 3;
-  		three.classList.add('active-level');
-  	}
+	let three = document.querySelector('[data-level="3"]');
+	if (!e.target.dataset.level) {
+		level = 3;
+		three.classList.add('active-level');
+	}
 };
 Levels.forEach(item => addEventListener('click', difficultyLevel));
 
@@ -62,7 +61,7 @@ const beginGame = () => {
 
 	const turn = document.querySelectorAll('.flip-card');
 	let isFlip = false;
-	const overturnCard = (e) => {
+	const overturnCard = e => {
 		if (!isFlip) {
 			e.currentTarget.classList.add('active');
 			isFlip = true;
