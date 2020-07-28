@@ -76,10 +76,6 @@ const beginGame = () => {
 	turn.forEach(item => {
 		item.addEventListener('click', overturnCard);
 	});
-	const secondOverturnCard = () => {
-	}
-	body.addEventListener('click', secondOverturnCard);
-
 	removeEventListener('click', difficultyLevel);
 };
 
