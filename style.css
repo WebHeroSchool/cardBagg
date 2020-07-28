@@ -1,0 +1,393 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+body {
+  background: url(img/Background.png) no-repeat;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 1440px;
+}
+
+.main {
+  max-width: 90%;
+  margin: auto;
+}
+
+.container {
+  min-height: 1024px;
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4.8%;
+}
+
+.level__choice {
+  font: normal bold 57px/ 67px 'Roboto', sans-serif;
+  color: #fff;
+  padding: 10% 0 .6% 2.4%;
+}
+
+.level__difficulty {
+  font: normal bold 19px/ 21px 'Roboto', sans-serif;
+  color: #fff;
+  padding: 0 0 0 2.5%;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-level {
+  position: relative;
+  outline: none;
+  background: none;
+  color: #fff;
+  font: normal bold 50px/ 59px 'Roboto', sans-serif;
+  align-self: flex-start;
+  margin-left: 6%;
+  cursor: pointer;
+  margin-bottom: 1.8%;
+}
+
+.game-level:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+#hard {
+  margin-bottom: 0;
+}
+
+/* квадратик */
+.active-level::before {
+  background: url(img/square.png) no-repeat;
+  background-size: cover;
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 27%;
+  right: 110.4%;
+}
+
+.begin {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: .5%;
+}
+
+.begin__button {
+  background: #d62b2e;
+  border-radius: 7px;
+  width: 54.8%;
+  height: 27.8%;
+  color: #fff;
+  font: normal bold 32px/ 37px 'Roboto', sans-serif;
+  margin: 17.6% 0 0 4.5%;
+  outline: none;
+  cursor: pointer;
+}
+
+.begin__button:hover {
+  background: #e79fa0;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 20% 20% 20%;
+}
+
+.card img {
+  border-radius: 4%;
+}
+
+.card__foto {
+  grid-column: 2/3;
+  transform: translate(31px, 19px) rotate(12deg);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+}
+
+.card__pic {
+  z-index: 1;
+  transform: translate(82px, 37px) rotate(39deg);
+  box-shadow: -2px 0 1px rgba(0, 0, 0, .3), 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.hidden {
+  display: none;
+}
+
+.flip {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 56.5%;
+}
+
+.flip-three {
+  width: 52.5%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-height: 1024px;
+}
+
+.flip-six {
+  width: 51.5%;
+  padding: 5.5% 0;
+  min-height: 0;
+  flex-wrap: wrap;
+}
+
+.flip-ten {
+  padding: 5% 0;
+  width: 84.5%;
+}
+
+.card-back__wrap {
+  background: url(img/card.png);
+  align-self: center;
+  width: 218px;
+  height: 341px;
+  cursor: pointer;
+  border-radius: 4%;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+  transition: .5s;
+}
+
+/* переворот */
+.flip-card {
+  background-color: transparent;
+  width: 218px;
+  height: 341px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 1.5% .4%;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4%;
+  transition: transform .8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner:hover {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, .5);
+  transform: translate3d(-10px, -30px, -40px) rotate(-3.08deg);
+}
+
+.flip-card.active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background: url(img/gameOver.png);
+  transform: rotateY(180deg);
+}
+
+.card-front_bug {
+  background: url(img/bag.png);
+  transform: rotateY(180deg);
+}
+
+/* Медиазапросы */
+@media (max-width: 1350px) {
+  .flip-three {
+    width: 65.5%;
+  }
+
+  .flip-six {
+    width: 50.5%;
+  }
+
+  .flip-ten {
+    width: 77.5%;
+  }
+
+  .flip-card,
+  .flip-card-inner,
+  .card-back,
+  .card-back__wrap,
+  .card-front {
+    background-size: 165px 261px;
+    height: 261px;
+    width: 165px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .flip-ten {
+    width: 90.5%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .flip-six {
+    width: 42.5%;
+  }
+
+  .flip-ten {
+    width: 64.5%;
+  }
+
+  .flip-card,
+  .flip-card-inner,
+  .card-back,
+  .card-back__wrap,
+  .card-front {
+    background-size: 105px 161px;
+    height: 161px;
+    width: 105px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    min-height: 815px;
+  }
+
+  .level {
+    margin-bottom: 8.8%;
+  }
+
+  .level__choice {
+    font: normal bold 54px/ 60px 'Roboto', sans-serif;
+    padding: 12% 0 4% 2.4%;
+  }
+
+  .level__difficulty {
+    font: normal bold 15px/ 21px 'Roboto', sans-serif;
+  }
+
+  .game-level {
+    font: normal bold 46px/ 59px 'Roboto', sans-serif;
+  }
+
+  .active-level::before {
+    right: 104.4%;
+  }
+
+  .begin {
+    display: flex;
+  }
+
+  .begin__button {
+    font: normal bold 28px/ 30px 'Roboto', sans-serif;
+    width: 302px;
+    height: 92px;
+    margin: 14% 0 0 4.5%;
+  }
+
+  .card {
+    display: none;
+  }
+
+  .flip-three {
+    min-height: 815px;
+  }
+
+  .flip-six {
+    width: 55.5%;
+  }
+
+  .flip-ten {
+    width: 70.5%;
+  }
+
+  .flip-card,
+  .flip-card-inner,
+  .card-back,
+  .card-back__wrap,
+  .card-front {
+    background-size: 86px 131px;
+    height: 131px;
+    width: 86px;
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    min-height: 700px;
+  }
+
+  .level {
+    margin-bottom: 12.8%;
+  }
+
+  .level__choice {
+    font: normal bold 44px/ 55px 'Roboto', sans-serif;
+  }
+
+  .level__difficulty {
+    font: normal bold 12px/ 21px 'Roboto', sans-serif;
+  }
+
+  .game-level {
+    font: normal bold 36px/ 59px 'Roboto', sans-serif;
+  }
+
+  .flip-three {
+    min-height: 670px;
+  }
+
+  .active-level::before {
+    width: 20px;
+    height: 20px;
+    top: 33%;
+  }
+
+  .begin__button {
+    font: normal bold 22px/ 30px 'Roboto', sans-serif;
+    width: 252px;
+    height: 72px;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    min-height: 570px;
+  }
+
+  .level {
+    margin-bottom: 7.8%;
+  }
+
+  .level__choice {
+    font: normal bold 36px/ 45px 'Roboto', sans-serif;
+  }
+
+  .level__difficulty {
+    font: normal bold 10px/ 21px 'Roboto', sans-serif;
+  }
+
+  .game-level {
+    font: normal bold 32px/ 59px 'Roboto', sans-serif;
+  }
+}
