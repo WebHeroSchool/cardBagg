@@ -1,8 +1,12 @@
-const Levels = document.querySelectorAll('.game-level');
+const  levels = document.querySelectorAll('.game-level');
 let level = 3;
+const start = document.getElementById('begin');
+let body = document.body;
+const wrap = document.createElement('div');
+const field = document.querySelector('.container');
 
 const difficultyLevel = e => {
-	Levels.forEach(item => item.classList.remove('active-level'));
+	levels.forEach(item => item.classList.remove('active-level'));
 	e.target.classList.add('active-level');
 	level = e.target.dataset.level;
 
@@ -12,18 +16,13 @@ const difficultyLevel = e => {
 		three.classList.add('active-level');
 	}
 };
-Levels.forEach(item => addEventListener('click', difficultyLevel));
-
-const start = document.getElementById('begin');
-const body = document.body;
-const wrap = document.createElement('div');
-const field = document.querySelector('.container');
+levels.forEach(item => addEventListener('click', difficultyLevel));
 
 const beginGame = () => {
+	const random = Math.floor(Math.random()*level);
 	field.classList.add('hidden');
 	wrap.classList.add('flip');
 	body.append(wrap);
-	const random = Math.floor(Math.random()*level);
 	for (let i = 0; i < level; i++) {
 		const flipCard = document.createElement('div');
 		const flipCardInner = document.createElement('div');
@@ -36,16 +35,21 @@ const beginGame = () => {
 		card.classList.add('card-back__wrap');
 		cardFront.classList.add('card-front');
 
-		if (i === 2) {
-			wrap.classList.add('flip-three');
-		} else if (i === 5) {
-			wrap.classList.remove('flip-three');
-			wrap.classList.add('flip-six');
-		} else if (i === 9) {
-			wrap.classList.remove('flip-six');
-			wrap.classList.add('flip-ten');
-		} else {
-			wrap.classList.add('flip');
+		switch(i) {
+			case 2:
+				wrap.classList.add('flip-three');
+				break;
+			case 5:
+				wrap.classList.remove('flip-three');
+				wrap.classList.add('flip-six');
+				break;
+			case 9:
+				wrap.classList.remove('flip-six');
+				wrap.classList.add('flip-ten');
+				break;
+			default:
+				wrap.classList.add('flip');
+				break;
 		}
 
 		if (i === random) {
@@ -72,6 +76,10 @@ const beginGame = () => {
 	turn.forEach(item => {
 		item.addEventListener('click', overturnCard);
 	});
+	const secondOverturnCard = () => {
+	}
+	body.addEventListener('click', secondOverturnCard);
+
 	removeEventListener('click', difficultyLevel);
 };
 
